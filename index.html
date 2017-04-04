@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Facebook image share</title>
+    <link href="style.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h1>This is Web Page Main title</h1>
+    </div>
+    <div class="main">
+        <div class="col1">
+            <div class="row1">
+                <h2>My photo gallery</h2>
+                <ul>
+                    <li><img src="600.jpg" alt=""></li>
+                    <li><img src="Desert.jpg" alt=""></li>
+                    <li><img src="Chrysanthemum.jpg" alt=""></li>
+                    <li><img src="Koala.jpg" alt=""></li>
+                    <li><img src="Hydrangeas.jpg" alt=""></li>
+                    <li><img src="Lighthouse.jpg" alt=""></li>
+                    <li><img src="Jellyfish.jpg" alt=""></li>
+                    <li><img src="Penguins.jpg" alt=""></li>
+                </ul>
+            </div>
+            <div class="row2">
+                <label id="label">Choose a file:</label>
+                <input type="file" id="fileUpload" style="border: 1px solid #000000"/>
+            </div>
+        </div>
+        <div class="col2">
+            <h2>This is for selecting the image</h2>
+            <canvas id="canvas">
+            </canvas>
+        </div>
+        <div class="col3">
+            <p id="dropzone">Drop Your Image Here</p>
+            <h2>Headline</h2>
+            <h4><label>Enter your own text below:</label></h4>
+            <textarea placeholder="Enter your text here:" onkeyup="changeText(this);"id="headline" name="headline" type="text" value=""></textarea>
+            <!--<action="Imageframe.html" method="post" enctype="multipart/form-data">-->
+            <br>
+            <select id="text-align" style="display: inline-block;">
+                <option value="" disabled="">Select alignment</option>
+                <option value="left">Align left</option>
+                <option value="center" onclick="centertext()">Align center</option>
+                <option value="right">Align right</option>
+            </select>
+            </br>
+            <br>
+            <select class="font-size" id="font-size" style="display: inline-block;">
+                <option value="" disabled="">Select a font size</option>
+                <option value="14">Small text</option>
+                <option value="24">Medium text</option>
+                <option value="36">Large text</option>
+            </select>
+            </br>
+            <br>
+            <select class="font-family" id="font-family" style="display: inline-block;">
+                <option value="" disabled="">Select a font-family</option>
+                <option value="Arial">Arial</option>
+                <option value="Helvetica Neue">Helvetica Neue</option>
+                <option value="Comic Sans MS">Comic Sans MS</option>
+            </select>
+            <!--<div class="m-editor__overlay" id="overlay" style="display: block;">-->
+                <!--<ul class="checkbox-group">-->
+                    <!--<li><label><input type="radio" name="overlay" value=""> None</label></li>-->
+                    <!--<li><label><input class="m-editor__swatch" style="background-color:#000" type="radio" name="overlay" value="#000"></label></li>-->
+                    <!--<li><label><input class="m-editor__swatch" style="background-color:#777" type="radio" name="overlay" value="#777"></label></li>-->
+                    <!--<li><label><input class="m-editor__swatch" style="background-color:#2980b9" type="radio" name="overlay" value="#2980b9"></label></li>-->
+                <!--</ul>-->
+            <!--</div>-->
+            <!--<h2>Overlay Color</h2>-->
+            <p><label style="color: brown; font-size: 18px">Canvas BackgroundColor:<input id="backgroundColor" type="color" onchange="color(this.value)" value="#FFFFFF"></label></p>
+            <input type="button" value="Share" onclick="fbs_click(this)"/>
+            <a id="download">Download as image</a>
+        </div>
+    </div>
+    <div class="footer">
+        <p>Copyright © 2017 Tutorialspoint.com</p>
+    </div>
+</div>
+<script type="text/javascript" src="sketch.js"></script>
+</body>
+</html>

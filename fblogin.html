@@ -1,0 +1,51 @@
+<html>
+<head>
+    <title>Facebook Login Form</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+    <div id ="status"></div>
+    <img class="fbimage" src="facebook.jpg" alt="">
+    <button class="btn-login" onclick="login();" type="submit">Login with Facebook</button>
+</div>
+<script>
+    window.fbAsyncInit = function() {
+        FB.init({
+            appId      : '433690976968221',
+            xfbml      : true,
+            version    : 'v2.8'
+        });
+        FB.getloginStatus(function (response) {
+            if(response.status == 'connected') {
+                document.getElementById('status').innerHTML = "we are connected";
+            }else if(response.status == 'not-authrized') {
+                document.getElementById('status').innerHTML = "we are connected";
+            }else {
+                document.getElementById('status').innerHTML = "we are not logged into facebook";
+            }
+        });
+    };
+
+    (function(d, s, id){
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) {return;}
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+
+    function login() {
+        FB.login(function (response) {
+            if(response.status == 'connected') {
+                document.getElementById('status').innerHTML = "we are connected";
+            }else if(response.status == 'not-authrized') {
+                document.getElementById('status').innerHTML = "we are connected";
+            }else {
+                document.getElementById('status').innerHTML = "we are not logged into facebook";
+            }
+        });
+    }
+</script>
+</body>
+</html>

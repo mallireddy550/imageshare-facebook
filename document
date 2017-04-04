@@ -1,0 +1,9 @@
+-->Created Gallery in one div
+-->Placed canvas image in another div
+-->Placed dropzone and text area and text sizes and shere the image and download the canvas image in another div
+-->In this Choose a file option is there,in this when u select image from desktop this image will come in Canvas frame
+-->And also anothe option is there for place the image in canvas
+-->i.e; when we drag and drop the image from desktop to dropzone that image will come in Canvas frame
+-->In text are when u write text in that that text will come on the Canvas image
+-->If u click on down image button that the canvas image will download with text.
+-->If u click on Share button there will open the facebook login for sharing the image into facebook account.

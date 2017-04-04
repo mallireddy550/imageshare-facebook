@@ -1,0 +1,122 @@
+body {
+    background-color: antiquewhite;
+}
+.container {
+    max-width:95%;
+    background-color: lemonchiffon;
+    margin: 0 auto;
+
+}
+.header {
+    background-color: aqua;
+    padding: 5px 0;
+}
+.header h1{
+    text-align: center;
+}
+.main {
+    /*background-color: aquamarine;*/
+}
+.main .col1 {
+    /*width: 35%;*/
+    width: 450px;
+    float: left;
+}
+.row1 {
+    /*background-color: darkorchid;*/
+    max-width: 100% !important;
+    float: left;
+}
+.row1 h2 {
+    text-align: center;
+}
+.row1 ul {
+    list-style-type: none;
+}
+.row1 li {
+    width: 100px;
+    margin: 10px;
+    float: left;
+}
+.row1 img {
+    width: 100%;
+    height: auto;
+}
+.row2 {
+    /*background-color: lightcoral;*/
+}
+.col2 {
+    float: left;
+    /*width: 35%;*/
+    width: 500px;
+    /*background-color: azure;*/
+}
+.col2 h2 {
+    text-align: center;
+}
+.col2 canvas {
+    border: 1px solid red;
+    background-color: white;
+    width: 90%;
+    height: 300px;
+}
+.col3 {
+    float: left;
+    /*width: 30%;*/
+    width: 300px;
+    /*background-color: burlywood;*/
+}
+.col3 h2 {
+    text-align: left;
+}
+.col3 #text-align {
+    width: 100%;
+}
+.col3 #font-size {
+    width: 100%;
+}
+.col3 #font-family{
+    width: 100%;
+}
+.col3 textarea {
+    width: 100%;;
+}
+.col3 #dropzone {
+    margin-top: 30px;
+    padding: 20px;
+    width: auto;
+    text-align: center;
+    border-style: dashed;
+    border-radius: 10px;
+    /*margin-right: 50px;*/
+}
+.dropzone.dragover {
+    background-color: #ccc;
+}
+.m-editor__swatch {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    /*appearance: none;*/
+    background-color: #000;
+    border-radius: 3px;
+    cursor: pointer;
+    /*display: block;*/
+    margin: 0;
+    margin-left: 1em;
+    outline: none;
+    text-align: center;
+    width: 30px;
+}
+.footer {
+    background-color: chocolate;
+    padding: 5px 0;
+    clear: both;
+}
+.footer p {
+    text-align: center;
+    font-size: 20px;
+    margin: 5px;
+}
+a:hover {
+    color: blue;
+}
