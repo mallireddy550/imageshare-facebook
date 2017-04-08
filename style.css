@@ -48,8 +48,8 @@ body {
 }
 .col2 {
     float: left;
-    /*width: 35%;*/
-    width: 500px;
+    width: 35%;
+    /*width: 500px;*/
     /*background-color: azure;*/
 }
 .col2 h2 {
