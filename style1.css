@@ -1,0 +1,25 @@
+body {
+    background-color: #FFFFFF;
+}
+.container {
+    background-color: #FFA1FF;
+}
+.header h1,.footer p {
+    color: #FFF80C;
+}
+.header,.footer {
+    background-color: #E80C7A;
+}
+.col2 canvas {
+    background-color: #FFFFFF;
+    border: 1px solid red;
+}
+.dropzone.dragover {
+    background-color: #ccc;
+}
+a:hover {
+    color: blue;
+}
+.m-editor__swatch {
+    background-color: #000;
+}
