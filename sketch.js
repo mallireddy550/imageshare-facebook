@@ -63,87 +63,77 @@ document.getElementById('download').addEventListener('click', function() {
     downloadCanvas(this, 'canvas', 'test.png');
 }, false);
 
-// dropzone event handlers
-var dropzone;
-dropzone = document.getElementById("dropzone");
-dropzone.addEventListener("dragenter", dragenter, false);
-dropzone.addEventListener("dragover", dragover, false);
-dropzone.addEventListener("dragleave",dragleave,false);
-dropzone.addEventListener("drop", drop, false);
+//drag and drop image on dropzone
+window.onload=function(){
 
-function dragenter(e) {
+    // dropZone event handlers
+    var dropZone=document.getElementById("dropzone");
+    dropZone.addEventListener("dragenter", handleDragEnter, false);
+    dropZone.addEventListener("dragover", handleDragOver, false);
+    dropZone.addEventListener("dragleave",handledragleave,false)
+    dropZone.addEventListener("drop", handleDrop, false);
+    //
+    function handleDragEnter(e){
+        e.stopPropagation();
+        e.preventDefault();
+        this.className = 'dropzone dragover';
+    }
+    //
+    function handleDragOver(e){
+        e.stopPropagation();
+        e.preventDefault();
+        this.className = 'dropzone dragover';
+    }
+    function handledragleave(e) {
+        e.stopPropagation();
+        e.preventDefault();
+        this.className = 'dropzone';
+    }
+    //
+    function handleDrop(e){
+        e.stopPropagation();
+        e.preventDefault();
 
-    e.dataTransfer.effectAllowed = "move";
-
-    // Sets the value and type of the dragged data
-    e.dataTransfer.setData("Text", e.target.getAttribute("id"));
-    e.stopPropagation();
-    e.preventDefault();
-    this.className = 'dropzone dragover';
-}
-//
-
-function dragover(e) {
-    e.stopPropagation();
-    e.preventDefault();
-    this.className = 'dropzone dragover';
-}
-
-function dragleave(e) {
-    e.stopPropagation();
-    e.preventDefault();
-    this.className = 'dropzone';
-}
-
-//
-function drop(e) {
-    e.stopPropagation();
-    e.preventDefault();
-
-    var dt = e.dataTransfer;
-    var files = dt.files;
-
-    this.className = 'dropzone';
-
-    handleFiles(files);
-}
-
-//
-function handleFiles(files) {
-
-    for (var i = 0; i < files.length; i++) {
-
-        // get the next file that the user selected
-        var file = files[i];
-        var imageType = /image.*/;
-
-        // don't try to process non-images
-        if (!file.type.match(imageType)) {
-            continue;
+        this.className = 'dropzone';
+        //
+        var url=e.dataTransfer.getData('text/plain');
+        // for img elements, url is the img src so
+        // create an Image Object & draw to canvas
+        if(url){
+            var img=new Image();
+            img.onload=function(){
+                context.clearRect(0, 0, canvas.width, canvas.height);
+                context.drawImage(this,0,0,canvas.width,canvas.height);
+            }
+            img.src=url;
+            // for img file(s), read the file & draw to canvas
+        }else{
+            handleFiles(e.dataTransfer.files);
         }
+    }
+    // read & create an image from the image file
+    function handleFiles(files) {
+        for (var i=0;i<files.length;i++) {
+            var file = files[i];
+            var imageType = /image.*/;
+            if (!file.type.match(imageType)){continue;}
+            var img = document.createElement("img");
+            img.classList.add("obj");
+            img.file = file;
+            var reader=new FileReader();
+            reader.onload=(function(aImg){
+                return function(e) {
+                    aImg.onload=function(){
+                        context.clearRect(0, 0, canvas.width, canvas.height);
+                        context.drawImage(aImg, 0, 0,canvas.width,canvas.height);
+                    }
+                    // e.target.result is a dataURL for the image
+                    aImg.src = e.target.result;
+                };
+            })(img);
+            reader.readAsDataURL(file);
+        } // end for
+    } // end handleFiles
 
-        // a seed img element for the FileReader
-        var img = document.createElement("img");
-        img.classList.add("obj");
-        img.file = file;
-
-        // get an image file from the user
-        // this uses drag/drop, but you could substitute file-browsing
-        var reader = new FileReader();
-        reader.onload = (function(aImg) {
-            return function(e) {
-                aImg.onload = function() {
-                    // draw the aImg onto the canvas
-                    context.clearRect(0, 0, canvas.width, canvas.height);
-                    context.drawImage(aImg, 0, 0,canvas.width,canvas.height);
-                }
-                // e.target.result is a dataURL for the image
-                aImg.src = e.target.result;
-            };
-        })(img);
-        reader.readAsDataURL(file);
-
-    } // end for
-
-}// end handleFiles
+}; // end $(function(){});
 
